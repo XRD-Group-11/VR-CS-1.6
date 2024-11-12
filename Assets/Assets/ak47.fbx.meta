@@ -3,7 +3,47 @@ guid: 4915875d2964bd6418be250096ef8275
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_barrel-3.bmp
+    second: {fileID: 2100000, guid: 8743d13f1c1f58b4193a908bfa057142, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_forearm-3.bmp
+    second: {fileID: 2100000, guid: 6975e043db3b34c42a1fede90ce8e0bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_handle-3.bmp
+    second: {fileID: 2100000, guid: c0978e58acafce442b5b47c82d37892d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_lower_body.bmp
+    second: {fileID: 2100000, guid: 3c3852694d285684192b64b80494eef8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_magazine.bmp
+    second: {fileID: 2100000, guid: 14da6c3d14017d6488e274b8211e8574, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_reticle.bmp
+    second: {fileID: 2100000, guid: 16273e5d7a5a48645bacc05420dd79aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_upper_body.bmp
+    second: {fileID: 2100000, guid: a903d5c7e4062b24381a1dc39998ea3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: v_ak47_wood-3.bmp
+    second: {fileID: 2100000, guid: 841487355f6efd447b32e0a91a794dac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
