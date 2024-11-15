@@ -210,6 +210,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8746503581769310141}
   fireRate: 600
+  _particleSystem: {fileID: 0}
+  hitParticalEffect: {fileID: 0}
+  recoil: 1
+  recoilSpeed: 0.1
+  currentAmmo: 0
+  leftAmmo: 0
+  digitSprites:
+  - {fileID: -177370971, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: -1151724503, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: -1677793302, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: 537565618, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: -2038129918, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: -526315825, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: 1991579601, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: -1323046144, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: 1775391747, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  - {fileID: -1922137758, guid: 643d610c41204aa40a8bdba2ff96b1e0, type: 3}
+  digitImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!54 &2119286392606272109
 Rigidbody:
   m_ObjectHideFlags: 0
