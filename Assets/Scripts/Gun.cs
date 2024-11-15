@@ -18,8 +18,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private float recoil = 1f;
     [SerializeField] private float recoilSpeed = 0.1f;
 
-    [SerializeField] private int currentAmmo = 30;
-    [SerializeField] private int leftAmmo = 90;
+    [SerializeField] private int currentAmmo = 20;
+    [SerializeField] private int leftAmmo = 51;
 
     [SerializeField] private Sprite[] digitSprites;
     [SerializeField] private Image[] digitImages;
@@ -101,13 +101,16 @@ public class Gun : MonoBehaviour
 
                 currentAmmo--;
                 UpdateNumericDisplay(currentAmmo, leftAmmo);
-                if (currentAmmo < 0) currentAmmo = 0;
+                if (currentAmmo < 0) currentAmmo = 0;     
+                
 
                 timer = 60f / fireRate;
                 recoilScale += recoilSpeed * Time.deltaTime;
                 recoilScale = recoilScale >= 1 ? 1 : recoilScale;
             }
         }
+
+        if (leftAmmo <= 0) leftAmmo = 0;
 
         if (Input.GetKeyDown(KeyCode.O) && isPickedUp && !isReloading && CanReload(currentAmmo))
         {
@@ -145,22 +148,19 @@ public class Gun : MonoBehaviour
     {
         isReloading = false;
         UpdateLeftAmmo(currentAmmo, leftAmmo);
-       
+
         Debug.Log("Finished Reloading");
     }
 
     private void UpdateLeftAmmo(int bullets, int ammoLeft)
     {
-        ammoSpent = 30 - bullets;
-        ammoLeft -= ammoSpent;
-        leftAmmo = ammoLeft;
-        if (ammoLeft > 30)
-        {
-            currentAmmo = 30;
-        }
-        UpdateNumericDisplay(currentAmmo, ammoLeft);
+        int ammoNeeded = 30 - bullets; 
+        ammoSpent = Mathf.Min(ammoNeeded, ammoLeft); 
         
+        currentAmmo += ammoSpent;
+        leftAmmo -= ammoSpent;
 
+        UpdateNumericDisplay(currentAmmo, leftAmmo);
     }
 
     private bool CanReload(int bulletCount)

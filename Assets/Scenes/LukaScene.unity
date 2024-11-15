@@ -5125,11 +5125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999934665450410188, guid: c4eeff5f1ee63e44fa3cbec869d048e5, type: 3}
       propertyPath: leftAmmo
-      value: 90
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 8999934665450410188, guid: c4eeff5f1ee63e44fa3cbec869d048e5, type: 3}
       propertyPath: currentAmmo
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8999934665450410188, guid: c4eeff5f1ee63e44fa3cbec869d048e5, type: 3}
       propertyPath: _particleSystem
