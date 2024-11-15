@@ -44,4 +44,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dcf5c1b2832ff4bac33a25fabef18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: ak47_shoot
+    clip: {fileID: 8300000, guid: 408ea2a5769c1c7489006175fb45ad4c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grenade_Exploding
+    clip: {fileID: 8300000, guid: 898ebecee0cf71a46aae732cc7efae81, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ak47_magin
+    clip: {fileID: 8300000, guid: a8a2f4cb93a7adb4a8c45a35a08b21d6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: pinpull
+    clip: {fileID: 8300000, guid: a46cd5a205c9b3440a69a5e6138728a6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ak47_magout
+    clip: {fileID: 8300000, guid: 20001839845989343ad3194f4438fd90, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
