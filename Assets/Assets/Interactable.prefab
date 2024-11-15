@@ -326,6 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 8087727386736326968}
+  radius: 5
+  force: 500
 --- !u!135 &53013068782356622
 SphereCollider:
   m_ObjectHideFlags: 0

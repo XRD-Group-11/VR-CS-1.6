@@ -1718,6 +1718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interactable (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1933258664170993257, guid: be69e19ae20de8d489e1d7dd95f6b5f7, type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7952102724030588350, guid: be69e19ae20de8d489e1d7dd95f6b5f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16
@@ -5124,6 +5128,10 @@ PrefabInstance:
       propertyPath: currentAmmo
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8999934665450410188, guid: c4eeff5f1ee63e44fa3cbec869d048e5, type: 3}
+      propertyPath: grabMagazine
+      value: 
+      objectReference: {fileID: 144993181}
     - target: {fileID: 8999934665450410188, guid: c4eeff5f1ee63e44fa3cbec869d048e5, type: 3}
       propertyPath: _particleSystem
       value: 

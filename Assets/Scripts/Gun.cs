@@ -26,7 +26,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Image[] digitImagesAmmoLeft;
 
     [SerializeField] private GameObject _ammo;
-
+    [SerializeField] private XRGrabInteractable grabMagazine;
 
     private bool isReloading;
     private bool isPickedUp = false;
@@ -37,6 +37,7 @@ public class Gun : MonoBehaviour
     private XRGrabInteractable grabInteractable;
     private bool isShooting = false;
     private int ammoSpent = 0;
+    private bool magazineInWeapon = true;
 
     public void StartShoot()
     {
@@ -56,6 +57,9 @@ public class Gun : MonoBehaviour
 
         grabInteractable.selectExited.AddListener(OnGunDropped);
         grabInteractable.selectEntered.AddListener(OnGunPickedUp);
+        
+        grabMagazine.selectExited.AddListener(OnMagazineRemoved);
+        grabMagazine.selectEntered.AddListener(OnMagazineInserted);
 
         UpdateNumericDisplay(currentAmmo, leftAmmo);
     }
@@ -71,11 +75,28 @@ public class Gun : MonoBehaviour
         isPickedUp = false;
         _ammo.SetActive(false);
     }
+    private void OnMagazineRemoved(SelectExitEventArgs args)
+    {
+        magazineInWeapon = false;
+        Debug.Log("Magazine removed!");
+    }
+
+    private void OnMagazineInserted(SelectEnterEventArgs args)
+    {
+        magazineInWeapon = true;
+        Debug.Log("Magazine inserted!");
+        if (CanReload(currentAmmo))
+        {
+            StartReload();
+        }
+    }
 
     private void OnDestroy()
     {
         grabInteractable.selectEntered.RemoveListener(OnGunPickedUp);
         grabInteractable.selectExited.RemoveListener(OnGunDropped);
+        grabMagazine.selectExited.RemoveListener(OnMagazineRemoved);
+        grabMagazine.selectEntered.RemoveListener(OnMagazineInserted);
     }
 
     private void Update()
@@ -138,9 +159,10 @@ public class Gun : MonoBehaviour
 
     private void StartReload()
     {
-        isReloading = true;
-        reloadTimer = 2f;
+        if (!magazineInWeapon) return; 
 
+        isReloading = true;
+        reloadTimer = 0f; 
         Debug.Log("Reloading...");
     }
 
@@ -165,7 +187,7 @@ public class Gun : MonoBehaviour
 
     private bool CanReload(int bulletCount)
     {
-        if (bulletCount < 30)
+        if (bulletCount < 30 && leftAmmo > 0)
         {
             return true;
         }
