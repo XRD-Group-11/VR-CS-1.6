@@ -9,10 +9,12 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject zombie;
     public float spawnRadius = 5f;
     private int counterOfZombies;
-    public int maxAmountOfZombies = 2;
+    private int totalCountOfKilledZombies;
+    public int maxAmountOfZombies = 3;
     void Start()
     {
         //SpawnZombie();
+        totalCountOfKilledZombies = 0;
     }
     
     public void SpawnZombie()
@@ -33,6 +35,22 @@ public class ZombieSpawner : MonoBehaviour
 
     public void KillZombie(){
         counterOfZombies -= 1;
+        totalCountOfKilledZombies += 1;
+        if(totalCountOfKilledZombies==1){
+            AudioManager.instance.Play("firstBlood");
+        }
+        Dictionary<int, string> sounds = new Dictionary<int, string>()
+        {
+            {1,"HolyShit"},
+            {2,"GodLike"},
+            {3,"KillingSpree"},
+            {4,"Dominating"},
+            {5,"Unstoppable"}
+        };
+        if(totalCountOfKilledZombies%4==0 ){
+            int randomInRange = Random.Range(1, 5); 
+            AudioManager.instance.Play(sounds[randomInRange]);
+        }
         Debug.Log("Amount of Zombies " + counterOfZombies);
     }
 }

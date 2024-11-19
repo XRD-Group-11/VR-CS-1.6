@@ -14,6 +14,7 @@ public class ZombieNPCScript : MonoBehaviour
     private float lastAttackTime = 0f; // Track time since the last attack
     public GameObject spawner;
     private ZombieSpawner spawnerScript;
+    
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class ZombieNPCScript : MonoBehaviour
                 player = playerObject.transform;
             }
         }
-
+        AudioManager.instance.Play("Zombe_Walking");
         FindSpawner();
 
     }
@@ -94,6 +95,7 @@ public class ZombieNPCScript : MonoBehaviour
             spawnerScript.KillZombie();
         isDead = true;
         animator.SetTrigger("Die");
+        AudioManager.instance.Play("Zombe_Die");
         Destroy(gameObject, 3f); // Destroy the object after the animation plays
     }
 
