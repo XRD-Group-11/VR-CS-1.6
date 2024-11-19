@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ZombieNPCScript : MonoBehaviour
+public class ZombieNPCScript : MonoBehaviour, IDamageable
 {
     public int health = 100; // Zombie's health
     public float speed = 2f; // Walking speed
@@ -67,7 +67,7 @@ public class ZombieNPCScript : MonoBehaviour
             animator.SetTrigger("Attack");
 
             // Placeholder for player health logic
-            /*PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            IDamageable playerHealth = player.GetComponent<IDamageable>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
@@ -75,7 +75,7 @@ public class ZombieNPCScript : MonoBehaviour
             else
             {
                 Debug.LogWarning("PlayerHealth component not found on the player.");
-            }*/
+            }
         }
     }
 
@@ -83,11 +83,9 @@ public class ZombieNPCScript : MonoBehaviour
     {
         if (isDead) return;
 
-        ZombieHealth health = GetComponent<Collider>().GetComponent<ZombieHealth>();
-        if(health != null)
-            health.TakeDamage(30);
+       health-=damage;
 
-        if (health.currentHealth <= 0)
+        if (health <= 0)
         {
             Die();
         }

@@ -11,6 +11,7 @@ public class ZombieSpawner : MonoBehaviour
     private int counterOfZombies;
     private int totalCountOfKilledZombies;
     public int maxAmountOfZombies = 3;
+    public GameObject magazine;
     void Start()
     {
         //SpawnZombie();
@@ -20,8 +21,9 @@ public class ZombieSpawner : MonoBehaviour
     public void SpawnZombie()
     {
         Vector3 randomOffset = Random.insideUnitSphere * spawnRadius;
-        randomOffset.y = 0;
+        randomOffset.y = 2;
         Instantiate(zombie, transform.position + randomOffset, Quaternion.identity);
+        Instantiate(magazine, transform.position + randomOffset, Quaternion.identity);
         counterOfZombies += 1;
     }
 

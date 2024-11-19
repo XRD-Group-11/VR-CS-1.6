@@ -36,7 +36,7 @@ public class Granade : MonoBehaviour
                     IDamageable damageable = collider.GetComponent<IDamageable>();
                     if (damageable != null)
                     {
-                        damageable.TakeDamage(30); 
+                        damageable.TakeDamage(100); 
                     }
                 }
 

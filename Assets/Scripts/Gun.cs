@@ -19,24 +19,20 @@ public class Gun : MonoBehaviour
     [SerializeField] private float recoilSpeed = 0.1f;
     public int bulletDamage = 20;
 
-    [SerializeField] private int currentAmmo = 20;
-    [SerializeField] private int leftAmmo = 51;
-
     [SerializeField] private Sprite[] digitSprites;
     [SerializeField] private Image[] digitImages;
     [SerializeField] private Image[] digitImagesAmmoLeft;
 
     [SerializeField] private GameObject _ammo;
-    [SerializeField] private XRGrabInteractable grabMagazine;
+    //[SerializeField] private XRGrabInteractable grabMagazine;
 
-    private bool isReloading;
-    private bool isPickedUp = false;
     private Rigidbody _rigidbody;
     private XRSocketInteractor _xrSocketInteractor;
     private float timer = 0f;
     private float reloadTimer = 0f;
     private float recoilScale = 0f;
-    private XRGrabInteractable grabInteractable;    private Magazine _magazine;
+
+    private Magazine _magazine;
     private bool hasBullets = false;
     private bool bulletInChamber = true;
 
@@ -68,6 +64,8 @@ public class Gun : MonoBehaviour
         AudioManager.instance.Play("ak47_magout");
         _magazine = null;
         hasBullets = false;
+
+        UpdateNumericDisplay(0, 30);
     }
     
     public void MagIn() {
@@ -77,63 +75,20 @@ public class Gun : MonoBehaviour
             hasBullets = true;
         else
             hasBullets = false;
+
+        UpdateNumericDisplay(_magazine.ammo, 30);
     }
 
     private void Awake()
     {
-        _ammo.SetActive(false);
+        //_ammo.SetActive(false);
         _rigidbody = gameObject.GetComponent<Rigidbody>();
-        grabInteractable = GetComponent<XRGrabInteractable>();
-
-        grabInteractable.selectExited.AddListener(OnGunDropped);
-        grabInteractable.selectEntered.AddListener(OnGunPickedUp);
-        
-        grabMagazine.selectExited.AddListener(OnMagazineRemoved);
-        grabMagazine.selectEntered.AddListener(OnMagazineInserted);
-
-        UpdateNumericDisplay(currentAmmo, leftAmmo);
-    }
-
-    private void OnGunPickedUp(SelectEnterEventArgs args)
-    {
-        isPickedUp = true;
-        _ammo.SetActive(true);
-    }
-
-    private void OnGunDropped(SelectExitEventArgs args)
-    {
-        isPickedUp = false;
-        _ammo.SetActive(false);
-    }
-    private void OnMagazineRemoved(SelectExitEventArgs args)
-    {
-        magazineInWeapon = false;
-        Debug.Log("Magazine removed!");
-    }
-
-    private void OnMagazineInserted(SelectEnterEventArgs args)
-    {
-        magazineInWeapon = true;
-        Debug.Log("Magazine inserted!");
-        if (CanReload(currentAmmo))
-        {
-            StartReload();
-        }
-    }
-
-    private void OnDestroy()
-    {
-        grabInteractable.selectEntered.RemoveListener(OnGunPickedUp);
-        grabInteractable.selectExited.RemoveListener(OnGunDropped);
-        grabMagazine.selectExited.RemoveListener(OnMagazineRemoved);
-        grabMagazine.selectEntered.RemoveListener(OnMagazineInserted);
         _xrSocketInteractor = gameObject.GetComponent<XRSocketInteractor>();
     }
 
     private void Update()
     {
-        if (isShooting && currentAmmo > 0 && isReloading == false)
-        {
+        if(isShooting) {
             if (!hasBullets && !bulletInChamber)
                 return;
             
@@ -178,38 +133,20 @@ public class Gun : MonoBehaviour
                         Debug.LogWarning("YourScript not found on the hit object!");
                     }
                 }
-    {
-        Debug.Log("Hit an enemy!");
-        // Add logic for when the object hit is an enemy
-    }
-
-                currentAmmo--;
-                UpdateNumericDisplay(currentAmmo, leftAmmo);
-                if (currentAmmo < 0) currentAmmo = 0;     
-                
 
                 timer = 60f / fireRate;
                 recoilScale += recoilSpeed * Time.deltaTime;
                 recoilScale = recoilScale >= 1 ? 1 : recoilScale;
+                
+                if (hasBullets && _magazine.ammo <= 0)
+                    hasBullets = false;
+                else 
+                    if(hasBullets) _magazine.TakeOneBullet();
+
+                    UpdateNumericDisplay(_magazine.ammo, 30);
             }
         }
 
-        if (leftAmmo <= 0) leftAmmo = 0;
-
-        if (Input.GetKeyDown(KeyCode.O) && isPickedUp && !isReloading && CanReload(currentAmmo))
-        {
-            Debug.Log("Reload Start");
-            StartReload();
-        }
-
-        if (isReloading)
-        {
-            reloadTimer -= Time.deltaTime;
-            if (reloadTimer <= 0)
-            {
-                FinishReload();
-            }
-        }
 
         if (timer >= 0)
             timer -= Time.deltaTime;
@@ -219,45 +156,6 @@ public class Gun : MonoBehaviour
         else if (recoilScale < 0)
             recoilScale = 0;
     }
-
-    private void StartReload()
-    {
-        if (!magazineInWeapon) return; 
-
-        isReloading = true;
-        reloadTimer = 0f; 
-        Debug.Log("Reloading...");
-    }
-
-    private void FinishReload()
-    {
-        isReloading = false;
-        UpdateLeftAmmo(currentAmmo, leftAmmo);
-
-        Debug.Log("Finished Reloading");
-    }
-
-    private void UpdateLeftAmmo(int bullets, int ammoLeft)
-    {
-        int ammoNeeded = 30 - bullets; 
-        ammoSpent = Mathf.Min(ammoNeeded, ammoLeft); 
-        
-        currentAmmo += ammoSpent;
-        leftAmmo -= ammoSpent;
-
-        UpdateNumericDisplay(currentAmmo, leftAmmo);
-    }
-
-    private bool CanReload(int bulletCount)
-    {
-        if (bulletCount < 30 && leftAmmo > 0)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
 
     private void UpdateNumericDisplay(int bullets, int bulletsRemaining)
     {

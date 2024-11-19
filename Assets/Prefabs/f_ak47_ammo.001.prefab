@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4787912554293762566}
   - component: {fileID: 1017106376688307753}
   - component: {fileID: 847383459516393872}
-  - component: {fileID: 2889700660044672924}
+  - component: {fileID: 4704496101785696341}
   m_Layer: 0
   m_Name: f_ak47_ammo.001
   m_TagString: Untagged
@@ -61,14 +61,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8346702527306889105}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -12.615, y: 2, z: -1.0764}
-  m_LocalScale: {x: 133.33334, y: 133.3333, z: 133.3333}
+  m_LocalScale: {x: 133.33334, y: 133.33325, z: 133.33325}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3213537503827512597}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &7485129856958411104
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 0
   m_SelectMode: 0
   m_FocusMode: 1
@@ -298,7 +298,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.00011811029, y: 0.000178388, z: 0.00063087017}
   m_Center: {x: 0.0001010382, y: -0.0037732292, z: 0.0005596471}
---- !u!114 &2889700660044672924
+--- !u!114 &4704496101785696341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8346702527306889105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f118a7cc5eddec54d91ade9039460d7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 069a8bf51ecbda9419a0153cb817e848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 30
