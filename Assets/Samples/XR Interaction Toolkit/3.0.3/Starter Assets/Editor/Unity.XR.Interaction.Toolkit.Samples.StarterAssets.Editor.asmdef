@@ -5,7 +5,11 @@
         "Unity.XR.Interaction.Toolkit",
         "Unity.XR.Interaction.Toolkit.Editor",
         "Unity.XR.CoreUtils",
-        "Unity.XR.CoreUtils.Editor"
+        "Unity.XR.CoreUtils.Editor",
+        "UnityEditor.UI",
+        "UnityEngine.UI",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner"
     ],
     "includePlatforms": [
         "Editor"
