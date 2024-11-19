@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int currentHealth {get; set; }
     [SerializeField] private int maxHealth = 100;
     
     [SerializeField] private Sprite[] digitSprites;  
