@@ -30,6 +30,12 @@ public class Gun : MonoBehaviour
         AudioManager.instance.Play("pinpull");
         }
     }
+
+    public void BoltPull()
+    {
+        if (hasBullets && !bulletInChamber)
+            bulletInChamber = true;
+    }
     
     public void EndShoot()
     {
@@ -62,12 +68,13 @@ public class Gun : MonoBehaviour
         if (isShooting)
         {
             if (!hasBullets && !bulletInChamber)
-            {
                 return;
-            }
             
             if (timer <= 0)
             {
+                if(!bulletInChamber)
+                    return;
+                
                 if (!hasBullets)
                 {
                     bulletInChamber = false;

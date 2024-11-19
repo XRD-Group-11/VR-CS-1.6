@@ -63,14 +63,20 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: ak47_magout
+    clip: {fileID: 8300000, guid: 20001839845989343ad3194f4438fd90, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: pinpull
     clip: {fileID: 8300000, guid: a46cd5a205c9b3440a69a5e6138728a6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: ak47_magout
-    clip: {fileID: 8300000, guid: 20001839845989343ad3194f4438fd90, type: 3}
+  - name: ak47_boltpull
+    clip: {fileID: 8300000, guid: 18a0078aa1f5097429e72b9c1ff4c543, type: 3}
     volume: 1
     pitch: 1
     loop: 0
