@@ -99,10 +99,10 @@ public class Gun : MonoBehaviour
                 recoilScale += recoilSpeed * Time.deltaTime;
                 recoilScale = recoilScale >= 1 ? 1 : recoilScale;
                 
-                if (_magazine.ammo <= 0)
+                if (hasBullets && _magazine.ammo <= 0)
                     hasBullets = false;
                 else 
-                    _magazine.TakeOneBullet();
+                    if(hasBullets) _magazine.TakeOneBullet();
             }
         }
 
