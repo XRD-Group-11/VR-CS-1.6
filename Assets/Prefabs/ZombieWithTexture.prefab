@@ -180,6 +180,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackDamage: 10
   attackCooldown: 2
+  spawner: {fileID: 0}
 --- !u!65 &3733760639993101929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199,5 +200,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6209154, y: 1.8895234, z: 0.31218648}
-  m_Center: {x: -0.007918835, y: 0.90375274, z: -0.015586257}
+  m_Size: {x: 0.44967365, y: 1.8571724, z: 0.15454674}
+  m_Center: {x: -0.0014262199, y: 0.88757724, z: -0.022218227}

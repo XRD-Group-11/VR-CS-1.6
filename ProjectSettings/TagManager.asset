@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - Zombie
+  - Spawner
   layers:
   - Default
   - TransparentFX

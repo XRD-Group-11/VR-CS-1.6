@@ -12,6 +12,8 @@ public class ZombieNPCScript : MonoBehaviour
     private Animator animator;
     private bool isDead = false;
     private float lastAttackTime = 0f; // Track time since the last attack
+    public GameObject spawner;
+    private ZombieSpawner spawnerScript;
 
     void Start()
     {
@@ -26,6 +28,9 @@ public class ZombieNPCScript : MonoBehaviour
                 player = playerObject.transform;
             }
         }
+
+        FindSpawner();
+
     }
 
     void Update()
@@ -85,8 +90,34 @@ public class ZombieNPCScript : MonoBehaviour
 
     void Die()
     {
+        if(spawnerScript!=null)
+            spawnerScript.KillZombie();
         isDead = true;
         animator.SetTrigger("Die");
         Destroy(gameObject, 3f); // Destroy the object after the animation plays
+    }
+
+    private void FindSpawner()
+    {
+        float detectionRadius = 5f; // Adjust radius as needed
+
+        // Look for colliders within a detection radius
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Spawner"))
+            {
+                spawner = collider.gameObject;
+                spawnerScript = spawner.GetComponent<ZombieSpawner>();
+                Debug.Log("Spawner found: " + spawner.name);
+                break;
+            }
+        }
+
+        if (spawner == null)
+        {
+            Debug.LogWarning("No spawner found nearby!");
+        }
     }
 }

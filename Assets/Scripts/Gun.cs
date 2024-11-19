@@ -10,8 +10,10 @@ public class Gun : MonoBehaviour
     [SerializeField] private int fireRate = 600; // 600 rounds per minute (RPM) 
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private GameObject hitParticalEffect;
+    [SerializeField] private GameObject zombieHitParticalEffect;
     [SerializeField] private float recoil = 1f;
     [SerializeField] private float recoilSpeed = 0.1f;
+    public int bulletDamage = 20;
     
     private Rigidbody _rigidbody;
     private float timer = 0f;
@@ -52,8 +54,28 @@ public class Gun : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(firePoint.position,recoilOffset, out hit))
                 {
-                    Instantiate(hitParticalEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    if(!hit.collider.CompareTag("Zombie"))
+                        Instantiate(hitParticalEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                 }
+                if(hit.collider.CompareTag("Zombie")) {
+                    GameObject hitObject = hit.collider.gameObject;
+                    // Get the script component and call the function
+                    ZombieNPCScript script = hitObject.GetComponent<ZombieNPCScript>();
+                    if (script != null)
+                    {
+                        script.TakeDamage(bulletDamage);
+                        Instantiate(zombieHitParticalEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+
+                    }
+                    else
+                    {
+                        Debug.LogWarning("YourScript not found on the hit object!");
+                    }
+                }
+    {
+        Debug.Log("Hit an enemy!");
+        // Add logic for when the object hit is an enemy
+    }
                 
                 timer = 60f / fireRate;
                 recoilScale += recoilSpeed * Time.deltaTime;

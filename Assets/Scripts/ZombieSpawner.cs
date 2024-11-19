@@ -15,7 +15,6 @@ public class ZombieSpawner : MonoBehaviour
         //SpawnZombie();
     }
     
-      // Spawn a square
     public void SpawnZombie()
     {
         Vector3 randomOffset = Random.insideUnitSphere * spawnRadius;
@@ -30,5 +29,10 @@ public class ZombieSpawner : MonoBehaviour
         if(counterOfZombies < maxAmountOfZombies){
             SpawnZombie();
         }
+    }
+
+    public void KillZombie(){
+        counterOfZombies -= 1;
+        Debug.Log("Amount of Zombies " + counterOfZombies);
     }
 }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 67538262390697567}
   - component: {fileID: 5016450346030412253}
+  - component: {fileID: 2332732532401949545}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,3 +48,24 @@ MonoBehaviour:
   zombie: {fileID: 6572261565737931528, guid: 9715ec890280cce489d24a2cf1e072b1, type: 3}
   spawnRadius: 5
   maxAmountOfZombies: 5
+--- !u!65 &2332732532401949545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318458324111047398}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0713367, y: 0.13398385, z: 2.1839333}
+  m_Center: {x: 0.0457983, y: -0.018357635, z: -0.5919666}
